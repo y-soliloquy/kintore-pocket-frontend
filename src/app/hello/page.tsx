@@ -6,7 +6,7 @@ export default function HelloPage() {
     const [message, setMessage] = useState('...loading')
 
     useEffect(() => {
-        fetch('http://localhost:8080/hello') // リポジトリのデプロイ先が決まったら、そこのパスを利用する。.envで管理する
+        fetch(`${process.env.NEXT_PUBLIC_API_URL}/hello`) // リポジトリのデプロイ先が決まったら、そこのパスを利用する。.envで管理する
             .then((res) => {
                 return res.text()
             })
