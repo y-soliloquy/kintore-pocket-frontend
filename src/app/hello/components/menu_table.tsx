@@ -1,21 +1,22 @@
 'use client'
 
 
-import { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 
 export default function MenuTable() {
+    const [weight, setWeight] = useState('')
+    const [menu, setMenu] = useState([])
 
-    const [menus, setMenus] = useState([])
-    const [error, setError] = useState('')
+    const handleSubmit = async (e: React.FormEvent) => {
+        e.preventDefault()
 
-    const fetchMenu = async () => {
         try {
           const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/5times5?template=5x5.json`, {
             method: 'POST',
             headers: {
               'Content-Type': 'application/json',
             },
-            body: JSON.stringify({ weight: 100 }),
+            body: JSON.stringify({ weight: Number(weight) }),
           })
     
           if (!res.ok) {
@@ -23,7 +24,7 @@ export default function MenuTable() {
           }
     
           const data = await res.json()
-          setMenus(data)
+          setMenu(data)
         } catch (err) {
           console.error(err)
           setError('通信に失敗しました')
@@ -34,17 +35,19 @@ export default function MenuTable() {
         <div className="p-6">
             <h1 className="text-2xl font-bold">5x5 メニュー</h1>
     
-            <button
-            className="mt-4 px-4 py-2 bg-blue-500 text-white rounded"
-            onClick={fetchMenu}
-            >
-            メニューを取得
-            </button>
-    
-            {error && <p className="text-red-500 mt-2">{error}</p>}
+            <form onSubmit={handleSubmit} className="mt-4 space-x-2">
+                <input
+                type="number"
+                value={weight}
+                onChange={(e) => setWeight(e.target.value)}
+                placeholder="最大重量 (kg)"
+                className="border p-2"
+                />
+                <button type="submit" className="bg-blue-500 text-white p-2">送信</button>
+            </form>
     
             <ul className="mt-4">
-            {menus.map((menu: any, index: number) => (
+            {menu.map((menu: any, index: number) => (
                 <li key={index}>
                 セット {menu.set}: {menu.weight}kg × {menu.reps}回
                 </li>
@@ -52,4 +55,8 @@ export default function MenuTable() {
             </ul>
         </div>
     )
+}
+
+function setError(arg0: string) {
+    throw new Error('Function not implemented.')
 }
