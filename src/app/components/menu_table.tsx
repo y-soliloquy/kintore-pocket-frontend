@@ -32,9 +32,7 @@ export default function MenuTable() {
       }
 
     return (
-        <div className="p-6">
-            <h1 className="text-2xl font-bold">5x5 メニュー</h1>
-    
+        <div className="p-6">    
             <form onSubmit={handleSubmit} className="mt-4 space-x-2">
                 <input
                 type="number"

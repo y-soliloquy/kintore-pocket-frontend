@@ -1,6 +1,6 @@
 'use server'
 
-import MenuTable from "./components/menu_table"
+import MenuTable from "../components/menu_table"
 
 export default async function HelloPage() {
     // リポジトリのデプロイ先が決まったら、そこのパスを利用する。.envで管理する
