@@ -60,7 +60,7 @@ export default function MenuTable({menuTemplate}: Props) {
                     <tr key={index}>
                         <td className="border border-gray-400 px-4 py-2">{menu.set}</td>
                         <td className="border border-gray-400 px-4 py-2">{menu.weight}</td>
-                        <td className="border border-gray-400 px-4 py-2">{menu.reps}</td>
+                        <td className="border border-gray-400 px-4 py-2">{menu.reps !== 100 ? menu.reps : "限界まで"}</td>
                     </tr>
                     ))}
                 </tbody>
