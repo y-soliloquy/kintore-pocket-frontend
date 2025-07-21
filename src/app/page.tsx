@@ -1,11 +1,25 @@
-import Image from "next/image";
+import Link from 'next/link'
 
 export default function Home() {
   return (
     <div className="font-sans grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20">
       <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
         <div>
-          筋トレ ポケット
+          <h1 className="text-4xl font-bold text-center mx-auto">筋トレ ポケット</h1>
+        </div>
+        <div>
+          <p>以下から各画面に遷移できます。気になるものをクリックしてください。</p>
+        </div>
+        <div>
+          <h2 className="py-3">
+            <Link href="/fivetimesfive">- 5x5メニュー</Link>
+          </h2>
+          <h2 className="py-3">
+            <Link href="/fivetimesfive">- ピラミッド法メニュー</Link>
+          </h2>
+          <h2 className="py-3">
+            <Link href="#">- トレーニング志向診断（準備中）</Link>
+          </h2>
         </div>
       </main>
       <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
