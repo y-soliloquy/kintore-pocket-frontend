@@ -9,7 +9,7 @@ export default async function FiveTimesFivePage() {
         <div className="p-6">
             <p>筋出力と筋肥大をバランスよく目指すことができるメニューです。</p>
         </div>
-        <MenuTable></MenuTable>
+        <MenuTable menuTemplate={process.env.NEXT_PUBLIC_FIVE_TIMES_FIVE_MENU}></MenuTable>
         </main>
     )
 }
