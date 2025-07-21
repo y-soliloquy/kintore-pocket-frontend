@@ -1,9 +1,12 @@
 'use client'
 
-
 import React, { useState } from 'react'
 
-export default function MenuTable() {
+type Props = {
+    menuTemplate: string|undefined
+}
+
+export default function MenuTable({menuTemplate}: Props) {
     const [weight, setWeight] = useState('')
     const [menu, setMenu] = useState([])
 
@@ -11,7 +14,7 @@ export default function MenuTable() {
         e.preventDefault()
 
         try {
-          const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/5times5?template=5x5.json`, {
+          const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/5times5?template=${menuTemplate}`, {
             method: 'POST',
             headers: {
               'Content-Type': 'application/json',
