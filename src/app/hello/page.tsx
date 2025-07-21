@@ -1,23 +1,12 @@
-'use client'
+'use server'
 
-import { useEffect, useState } from 'react'
+export default async function HelloPage() {
+    // リポジトリのデプロイ先が決まったら、そこのパスを利用する。.envで管理する
+    const res = fetch(`${process.env.NEXT_PUBLIC_API_URL}/hello`, {
+        cache: 'no-store'
+    })
 
-export default function HelloPage() {
-    const [message, setMessage] = useState('...loading')
-
-    useEffect(() => {
-        fetch(`${process.env.NEXT_PUBLIC_API_URL}/hello`) // リポジトリのデプロイ先が決まったら、そこのパスを利用する。.envで管理する
-            .then((res) => {
-                return res.text()
-            })
-            .then((data) => {
-                setMessage(data)
-            })
-            .catch((err) => {
-                console.log('fetch failed', err)
-                setMessage('error...')
-            })
-    }, [])
+    const message = await (await res).text()
 
     return (
         <main className='p-6'>
