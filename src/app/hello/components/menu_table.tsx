@@ -46,13 +46,24 @@ export default function MenuTable() {
                 <button type="submit" className="bg-blue-500 text-white p-2">送信</button>
             </form>
     
-            <ul className="mt-4">
-            {menu.map((menu: any, index: number) => (
-                <li key={index}>
-                セット {menu.set}: {menu.weight}kg × {menu.reps}回
-                </li>
-            ))}
-            </ul>
+            <table className="mt-4 border-collapse border border-gray-400">
+                <thead>
+                    <tr>
+                    <th className="border border-gray-400 px-4 py-2">セット</th>
+                    <th className="border border-gray-400 px-4 py-2">重量 (kg)</th>
+                    <th className="border border-gray-400 px-4 py-2">回数</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {menu.map((menu: any, index: number) => (
+                    <tr key={index}>
+                        <td className="border border-gray-400 px-4 py-2">{menu.set}</td>
+                        <td className="border border-gray-400 px-4 py-2">{menu.weight}</td>
+                        <td className="border border-gray-400 px-4 py-2">{menu.reps}</td>
+                    </tr>
+                    ))}
+                </tbody>
+            </table>
         </div>
     )
 }
