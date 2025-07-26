@@ -52,7 +52,7 @@ export default function Diagnosis({ answers }: Props) {
 
             {result && (
                 <div className="mt-6">
-                    <h2 className="text-xl font-bold">あなたのタイプ: {result.type}</h2>
+                    <h2 className="text-xl font-bold">あなたのタイプ: {result.type === "A" ? "筋肥大タイプ" : result.type === "B" ? "筋出力タイプ" : "持久力タイプ"}</h2>
                     <ul className="list-disc ml-6 mt-2">
                         {result.recommendations.map((r, i) => (
                             <li key={i}>{r}</li>
