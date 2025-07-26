@@ -21,6 +21,9 @@ export default function Home() {
             <Link href="/ascending">- アセンディング法</Link>
           </h2>
           <h2 className="py-3">
+            <Link href="/descending">- ディセンディング法</Link>
+          </h2>
+          <h2 className="py-3">
             <Link href="#">- トレーニング志向診断（準備中）</Link>
           </h2>
         </div>
