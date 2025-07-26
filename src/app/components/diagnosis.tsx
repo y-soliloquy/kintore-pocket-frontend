@@ -39,7 +39,7 @@ export default function Diagnosis({ answers }: Props) {
     }
 
     return (
-        <div className="mt-8">
+        <div className="mt-8 p-6">
             <button
                 className="bg-blue-500 text-white px-4 py-2 rounded"
                 onClick={handleDiagnose}

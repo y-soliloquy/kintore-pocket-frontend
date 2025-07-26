@@ -39,7 +39,7 @@ export default function Questions({ onAnswersChangeAction }: Props) {
     }
 
     return (
-        <div>
+        <div className="p-6">
             {questions.map((q) => (
                 <div key={q.id} className="mb-4">
                     <p className="font-semibold">{q.title}</p>
