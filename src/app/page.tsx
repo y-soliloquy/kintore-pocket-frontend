@@ -12,10 +12,13 @@ export default function Home() {
         </div>
         <div>
           <h2 className="py-3">
-            <Link href="/fivetimesfive">- 5x5メニュー</Link>
+            <Link href="/fivetimesfive">- 5x5法</Link>
           </h2>
           <h2 className="py-3">
-            <Link href="/fivetimesfive">- ピラミッド法メニュー</Link>
+            <Link href="/fivetimesfive">- ピラミッド法</Link>
+          </h2>
+          <h2 className="py-3">
+            <Link href="/ascending">- アセンディング法</Link>
           </h2>
           <h2 className="py-3">
             <Link href="#">- トレーニング志向診断（準備中）</Link>

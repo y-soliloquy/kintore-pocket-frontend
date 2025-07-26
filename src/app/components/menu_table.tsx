@@ -14,7 +14,7 @@ export default function MenuTable({menuTemplate}: Props) {
         e.preventDefault()
 
         try {
-          const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/5times5?template=${menuTemplate}`, {
+          const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/training_menu?template=${menuTemplate}`, {
             method: 'POST',
             headers: {
               'Content-Type': 'application/json',
