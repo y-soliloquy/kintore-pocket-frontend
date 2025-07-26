@@ -6,9 +6,19 @@ type Props = {
     answers: { [id: string]: string }
 }
 
-type Response = {
+type Result = {
     type: string
     recommendations: string[]
+}
+
+type Response = {
+    results: Result[]
+}
+
+const typeLabels: Record<string, string> = {
+    A: '筋肥大タイプ',
+    B: '筋出力タイプ',
+    C: '持久力タイプ',
 }
 
 export default function Diagnosis({ answers }: Props) {
@@ -52,12 +62,17 @@ export default function Diagnosis({ answers }: Props) {
 
             {result && (
                 <div className="mt-6">
-                    <h2 className="text-xl font-bold">あなたのタイプ: {result.type === "A" ? "筋肥大タイプ" : result.type === "B" ? "筋出力タイプ" : "持久力タイプ"}</h2>
-                    <ul className="list-disc ml-6 mt-2">
-                        {result.recommendations.map((r, i) => (
-                            <li key={i}>{r}</li>
-                        ))}
-                    </ul>
+                    <h2 className="text-xl font-bold mb-2">あなたのタイプ</h2>
+                    {result.results.map((r, idx) => (
+                        <div key={idx} className="mb-4">
+                            <h3 className="font-semibold">{typeLabels[r.type] || r.type}</h3>
+                            <ul className="list-disc ml-6 mt-1">
+                                {r.recommendations.map((rec, i) => (
+                                    <li key={i}>{rec}</li>
+                                ))}
+                            </ul>
+                        </div>
+                    ))}
                 </div>
             )}
         </div>
