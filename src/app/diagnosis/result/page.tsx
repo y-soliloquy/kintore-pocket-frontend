@@ -14,7 +14,7 @@ const recommendationLinks: Record<string, string> = {
     '5x5法': '/fivetimesfive',
     'アセンディング法': '/ascending',
     'ディセンディング法': '/descending',
-    '3x3法': 'threetimesthree'
+    '3x3法': '/threetimesthree'
 }
 
 const recommendationImages: Record<string, string> = {
