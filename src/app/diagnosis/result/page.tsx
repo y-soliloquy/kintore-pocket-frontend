@@ -46,7 +46,7 @@ export default function DiagnosisResultPage() {
                         return (
                             <li key={i}>
                                 {link ? (
-                                    <Link href={link} target='_blank' className="text-blue-500 underline">
+                                    <Link href={link} target='_blank' className="text-blue-300">
                                         {r}
                                     </Link>
                                 ) : (
