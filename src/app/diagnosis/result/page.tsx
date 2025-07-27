@@ -1,6 +1,5 @@
 'use client'
 
-import { recordTraceEvents } from 'next/dist/trace'
 import Link from 'next/link'
 import { useSearchParams } from 'next/navigation'
 
@@ -23,31 +22,34 @@ export default function DiagnosisResultPage() {
     const recommendations = searchParams.getAll('recommendation') // ?rec=ピラミッド法
 
     return (
-        <div className="p-6">
-            <h2 className="text-xl font-bold mb-2">あなたのタイプ</h2>
-            {types.map((t, i) => (
-                <div key={i} className="mb-4">
-                    <h3 className="font-semibold">{typeLabels[t] || t}</h3>
-                </div>
-            ))}
+        <main className="p-6">
+            <Link className="p-6" href="/">TOPに戻る</Link>
+            <div className="p-6">
+                <h2 className="text-xl font-bold mb-2">あなたのタイプ</h2>
+                {types.map((t, i) => (
+                    <div key={i} className="mb-4">
+                        <h3 className="font-semibold">＞ {typeLabels[t] || t}</h3>
+                    </div>
+                ))}
 
-            <h3 className="font-semibold mt-4">おすすめメニュー</h3>
-            <ul className="list-disc ml-6 mt-1">
-                {recommendations.map((r, i) => {
-                    const link = recommendationLinks[r]
-                    return (
-                        <li key={i}>
-                            {link ? (
-                                <Link href={link} target='_blank' className="text-blue-500 underline">
-                                    {r}
-                                </Link>
-                            ) : (
-                                <span>{r}</span> // またはそのまま r
-                            )}
-                        </li>
-                    )
-                })}
-            </ul>
-        </div>
+                <h2 className="text-xl font-bold mb-2">おすすめメニュー</h2>
+                <ul className="list-disc ml-6 mt-1">
+                    {recommendations.map((r, i) => {
+                        const link = recommendationLinks[r]
+                        return (
+                            <li key={i}>
+                                {link ? (
+                                    <Link href={link} target='_blank' className="text-blue-500 underline">
+                                        {r}
+                                    </Link>
+                                ) : (
+                                    <span>{r}</span> // またはそのまま r
+                                )}
+                            </li>
+                        )
+                    })}
+                </ul>
+            </div>
+        </main>
     )
 }
