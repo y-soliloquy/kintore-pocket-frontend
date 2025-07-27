@@ -14,22 +14,25 @@ export default function Home() {
                     <h2 className="py-3">
                         - トレーニングメニュー
                     </h2>
-                    <h2 className="py-3 pl-6">
+                    <h2 className="py-3 pl-6 text-blue-300">
                         <Link href="/threetimesthree">- 3x3法</Link>
                     </h2>
-                    <h2 className="py-3 pl-6">
+                    <h2 className="py-3 pl-6 text-blue-300">
                         <Link href="/fivetimesfive">- 5x5法</Link>
                     </h2>
-                    <h2 className="py-3 pl-6">
+                    <h2 className="py-3 pl-6 text-blue-300">
                         <Link href="/pyramid">- ピラミッド法</Link>
                     </h2>
-                    <h2 className="py-3 pl-6">
+                    <h2 className="py-3 pl-6 text-blue-300">
                         <Link href="/ascending">- アセンディング法</Link>
                     </h2>
-                    <h2 className="py-3 pl-6">
+                    <h2 className="py-3 pl-6 text-blue-300">
                         <Link href="/descending">- ディセンディング法</Link>
                     </h2>
                     <h2 className="py-3">
+                        - インターバル
+                    </h2>
+                    <h2 className="py-3 pl-6 text-blue-300">
                         <Link href="/diagnosis">- トレーニング志向診断β</Link>
                     </h2>
                 </div>
