@@ -15,9 +15,11 @@ export type Question = {
 
 type Props = {
     onAnswersChangeAction: (answers: { [id: string]: string }) => void
+    onReadyChangeAction: (isReady: boolean) => void
+    onQuestionCountAction: (totalQuestions: number) => void
 }
 
-export default function Questions({ onAnswersChangeAction }: Props) {
+export default function Questions({ onAnswersChangeAction, onReadyChangeAction, onQuestionCountAction }: Props) {
     const [questions, setQuestions] = useState<Question[]>([])
     const [answers, setAnswers] = useState<{ [id: string]: string }>({})
 

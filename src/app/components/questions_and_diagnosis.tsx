@@ -8,10 +8,14 @@ export default function QuestionsAndDiagnosis() {
     const [answers, setAnswers] = useState<{ [id: string]: string }>({})
     const [isReady, setIsReady] = useState(false)
     const [totalQuestions, setTotalQuestions] = useState(0)
-    
+
     return (
         <>
-            <Questions onAnswersChangeAction={setAnswers} />
+            <Questions
+                onAnswersChangeAction={setAnswers}
+                onReadyChangeAction={setIsReady}
+                onQuestionCountAction={setTotalQuestions}
+            />
             <DiagnosisResult answers={answers} />
         </>
     )
