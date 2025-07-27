@@ -1,5 +1,6 @@
 'use client'
 
+import { useRouter } from 'next/navigation'
 import { useState } from 'react'
 
 type Props = {
@@ -24,8 +25,8 @@ const typeLabels: Record<string, string> = {
 }
 
 export default function Diagnosis({ answers, totalQuestions, isReady }: Props) {
-    const [result, setResult] = useState<Response | null>(null)
     const [error, setError] = useState<string | null>(null)
+    const router = useRouter()
 
     const handleDiagnose = async () => {
         const answerList = Object.values(answers)
@@ -47,8 +48,15 @@ export default function Diagnosis({ answers, totalQuestions, isReady }: Props) {
             }
 
             const data: Response = await res.json()
-            setResult(data)
-            setError(null)
+            
+            const query = new URLSearchParams()
+            data.results.forEach(result => {
+                query.append('type', result.type)
+                result.recommendations.forEach(recommendation => {
+                    query.append('recommendation', recommendation)
+                })
+            })
+            router.push(`/diagnosis/result?${query.toString()}`)
         } catch (err: any) {
             setError(err.message || '診断に失敗しました')
         }
@@ -68,22 +76,6 @@ export default function Diagnosis({ answers, totalQuestions, isReady }: Props) {
             </button>
 
             {error && <p className="text-red-500 mt-4">{error}</p>}
-
-            {result && (
-                <div className="mt-6">
-                    <h2 className="text-xl font-bold mb-2">あなたのタイプ</h2>
-                    {result.results.map((r, idx) => (
-                        <div key={idx} className="mb-4">
-                            <h3 className="font-semibold">{typeLabels[r.type] || r.type}</h3>
-                            <ul className="list-disc ml-6 mt-1">
-                                {r.recommendations.map((rec, i) => (
-                                    <li key={i}>{rec}</li>
-                                ))}
-                            </ul>
-                        </div>
-                    ))}
-                </div>
-            )}
         </div>
     )
 }
