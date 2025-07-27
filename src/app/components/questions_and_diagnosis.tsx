@@ -16,7 +16,11 @@ export default function QuestionsAndDiagnosis() {
                 onReadyChangeAction={setIsReady}
                 onQuestionCountAction={setTotalQuestions}
             />
-            <DiagnosisResult answers={answers} />
+            <DiagnosisResult
+                answers={answers}
+                totalQuestions={totalQuestions}
+                isReady={isReady}
+            />
         </>
     )
 }
