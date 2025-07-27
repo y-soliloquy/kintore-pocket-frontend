@@ -8,7 +8,7 @@ export default function Home() {
                     <h1 className="text-4xl font-bold text-center mx-auto">筋トレ ポケット</h1>
                 </div>
                 <div>
-                    <p>以下から各画面に遷移できます。気になるものをクリックしてください。</p>
+                    <p>筋トレに役立つちょっとしたWebアプリケーション集です。</p>
                 </div>
                 <div>
                     <h2 className="py-3">
