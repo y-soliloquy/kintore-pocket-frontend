@@ -11,7 +11,7 @@ const typeLabels: Record<string, string> = {
 export default function DiagnosisResultPage() {
   const searchParams = useSearchParams()
   const types = searchParams.getAll('type') // ?type=A&type=B
-  const recommendations = searchParams.getAll('rec') // ?rec=ピラミッド法
+  const recommendations = searchParams.getAll('recommendation') // ?rec=ピラミッド法
 
   return (
     <div className="p-6">
