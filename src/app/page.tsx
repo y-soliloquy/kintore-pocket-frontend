@@ -15,7 +15,7 @@ export default function Home() {
             <Link href="/fivetimesfive">- 5x5法</Link>
           </h2>
           <h2 className="py-3">
-            <Link href="/fivetimesfive">- ピラミッド法</Link>
+            <Link href="/pyramid">- ピラミッド法</Link>
           </h2>
           <h2 className="py-3">
             <Link href="/ascending">- アセンディング法</Link>
