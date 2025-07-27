@@ -34,6 +34,16 @@ export default function Questions({ onAnswersChangeAction, onReadyChangeAction, 
 
     useEffect(() => {
         onAnswersChangeAction(answers)
+        const isComplete = questions.length > 0 && Object.keys(answers).length === questions.length
+        onReadyChangeAction(isComplete)
+    }, [answers, questions,onAnswersChangeAction, onReadyChangeAction])
+
+    useEffect(() => {
+        onQuestionCountAction(questions.length)
+    }, [questions, onQuestionCountAction])
+
+    useEffect(() => {
+        onAnswersChangeAction(answers)
     }, [answers, onAnswersChangeAction])
 
     const handleSelect = (questionId: string, answerType: string) => {
