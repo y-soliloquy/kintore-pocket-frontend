@@ -15,9 +15,11 @@ export type Question = {
 
 type Props = {
     onAnswersChangeAction: (answers: { [id: string]: string }) => void
+    onReadyChangeAction: (isReady: boolean) => void
+    onQuestionCountAction: (totalQuestions: number) => void
 }
 
-export default function Questions({ onAnswersChangeAction }: Props) {
+export default function Questions({ onAnswersChangeAction, onReadyChangeAction, onQuestionCountAction }: Props) {
     const [questions, setQuestions] = useState<Question[]>([])
     const [answers, setAnswers] = useState<{ [id: string]: string }>({})
 
@@ -29,6 +31,16 @@ export default function Questions({ onAnswersChangeAction }: Props) {
                 console.error('質問の取得に失敗しました', err)
             })
     }, [])
+
+    useEffect(() => {
+        onAnswersChangeAction(answers)
+        const isComplete = questions.length > 0 && Object.keys(answers).length === questions.length
+        onReadyChangeAction(isComplete)
+    }, [answers, questions,onAnswersChangeAction, onReadyChangeAction])
+
+    useEffect(() => {
+        onQuestionCountAction(questions.length)
+    }, [questions, onQuestionCountAction])
 
     useEffect(() => {
         onAnswersChangeAction(answers)
