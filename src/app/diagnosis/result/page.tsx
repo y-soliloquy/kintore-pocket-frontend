@@ -4,8 +4,8 @@ import Link from 'next/link'
 import { useSearchParams } from 'next/navigation'
 
 const typeLabels: Record<string, string> = {
-    A: '筋肥大タイプ',
-    B: '筋出力タイプ',
+    A: 'ボディメイクタイプ',
+    B: 'パワーリフタータイプ',
     C: '持久力タイプ',
 }
 
@@ -14,6 +14,12 @@ const recommendationLinks: Record<string, string> = {
     '5x5法': '/fivetimesfive',
     'アセンディング法': '/ascending',
     'ディセンディング法': '/descending',
+}
+
+const recommendationImages: Record<string, string> = {
+    A: '/diagnosis_results/bodymake-min.png',
+    B: '/diagnosis_results/lifter-min.png',
+    C: '/diagnosis_results/jog-min.png'
 }
 
 export default function DiagnosisResultPage() {
@@ -49,6 +55,16 @@ export default function DiagnosisResultPage() {
                         )
                     })}
                 </ul>
+                <div>
+                    {types.map((t, i) => {
+                        const src = recommendationImages[t]
+                        return (
+                            <div key={i} className="p-6">
+                                <img width="100%" src={src} />
+                            </div>
+                        )
+                    })}
+                </div>
             </div>
         </main>
     )
