@@ -5,10 +5,16 @@ export default function Home() {
         <div className="font-sans grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20">
             <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
                 <div>
-                    <h1 className="text-4xl font-bold text-center mx-auto">筋トレ ポケット</h1>
+                    <h1 className="text-5xl font-bold text-center mx-auto">筋トレ ポケット</h1>
                 </div>
                 <div>
-                    <p>筋トレに役立つちょっとしたWebアプリケーション集です。</p>
+                    <p>筋トレに役立つちょっとしたWebアプリケーションです。</p>
+                    <br />
+                    <p>世の中にはリッチな機能がモリモリついたスマホアプリや<br />Webアプリケーションがすでに存在しています。</p>
+                    <br />
+                    <p>「もっと手軽に利用できるものがあってもいいよなぁ」<br />という考えから本アプリケーションは作られました。</p>
+                    <br />
+                    <p>「今季のメニューどうしようかなぁ」<br />などを考える際にシュッと利用してみてください。</p>
                 </div>
                 <div>
                     <h2 className="py-3 text-2xl font-bold">
