@@ -29,7 +29,11 @@ export default function Diagnosis({ answers, totalQuestions, isReady }: Props) {
 
     const handleDiagnose = async () => {
         const answerList = Object.values(answers)
-        if (answerList.length !== totalQuestions) return
+        // if (answerList.length !== totalQuestions) return
+        if (answerList.length !== totalQuestions) {
+            setError('すべての質問に回答してください')
+            return
+          }
 
         try {
             const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/diagnosis`, {
@@ -59,7 +63,6 @@ export default function Diagnosis({ answers, totalQuestions, isReady }: Props) {
                       : 'bg-gray-300 text-gray-500 cursor-not-allowed'
                   }`}
                 onClick={handleDiagnose}
-                disabled={!isReady}
             >
                 診断する
             </button>
