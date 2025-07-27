@@ -11,7 +11,7 @@ export default async function ThreeTimesThreePage() {
         <div className="p-6">
             <p>筋出力を上げることに向いているメニューです。</p>
         </div>
-        <MenuTable menuTemplate={process.env.NEXT_PUBLIC_PIRAMID_MENU}></MenuTable>
+        <MenuTable menuTemplate={process.env.NEXT_PUBLIC_THREE_TIMES_THREE_MENU}></MenuTable>
         </main>
     )
 }
