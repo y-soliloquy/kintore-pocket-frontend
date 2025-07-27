@@ -11,8 +11,8 @@ export default function Home() {
                     <p>筋トレに役立つちょっとしたWebアプリケーション集です。</p>
                 </div>
                 <div>
-                    <h2 className="py-3">
-                        - トレーニングメニュー
+                    <h2 className="py-3 text-2xl font-bold">
+                        トレーニングメニュー
                     </h2>
                     <h2 className="py-3 pl-6 text-blue-300">
                         <Link href="/threetimesthree">- 3x3法</Link>
@@ -29,8 +29,8 @@ export default function Home() {
                     <h2 className="py-3 pl-6 text-blue-300">
                         <Link href="/descending">- ディセンディング法</Link>
                     </h2>
-                    <h2 className="py-3">
-                        - インターバル
+                    <h2 className="py-3 text-2xl font-bold">
+                        インターバル
                     </h2>
                     <h2 className="py-3 pl-6 text-blue-300">
                         <Link href="/diagnosis">- トレーニング志向診断β</Link>
