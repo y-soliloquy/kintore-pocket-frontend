@@ -1,7 +1,7 @@
 'use client'
 
 import Link from 'next/link'
-import { useSearchParams } from 'next/navigation'
+import { useDiagnosisStore } from '@/app/store/diagnosisStore'
 
 const typeLabels: Record<string, string> = {
     A: 'ボディメイクタイプ',
@@ -24,9 +24,19 @@ const recommendationImages: Record<string, string> = {
 }
 
 export default function DiagnosisResultPage() {
-    const searchParams = useSearchParams()
-    const types = searchParams.getAll('type') // ?type=A&type=B
-    const recommendations = searchParams.getAll('recommendation') // ?rec=ピラミッド法
+    const results = useDiagnosisStore(state => state.results)
+
+    if (!results) {
+        return (
+        <main className="p-6">
+            <p>診断結果が見つかりません</p>
+            <Link href="/">TOPに戻る</Link>
+        </main>
+        )
+    }
+
+    const types = results.map(r => r.type)
+    const recommendations = results.flatMap(r => r.recommendations)
 
     return (
         <main className="p-6">
@@ -35,7 +45,7 @@ export default function DiagnosisResultPage() {
                 <h2 className="text-xl font-bold mb-2">あなたのタイプ</h2>
                 {types.map((t, i) => (
                     <div key={i} className="mb-4">
-                        <h3 className="font-semibold">＞ {typeLabels[t] || t}</h3>
+                        <h3 className="font-semibold">＞ {typeLabels[t]}</h3>
                     </div>
                 ))}
 
