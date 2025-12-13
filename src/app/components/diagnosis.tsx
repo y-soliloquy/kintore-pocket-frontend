@@ -2,7 +2,6 @@
 
 import { useRouter } from 'next/navigation'
 import { useState } from 'react'
-import { useDiagnosisStore } from '../store/diagnosisStore'
 
 type Props = {
     answers: { [id: string]: string }
@@ -28,7 +27,6 @@ const typeLabels: Record<string, string> = {
 export default function Diagnosis({ answers, totalQuestions, isReady }: Props) {
     const [error, setError] = useState<string | null>(null)
     const router = useRouter()
-    const setResults = useDiagnosisStore(state => state.setResults)
 
     const handleDiagnose = async () => {
         const answerList = Object.values(answers)
@@ -50,9 +48,15 @@ export default function Diagnosis({ answers, totalQuestions, isReady }: Props) {
             }
 
             const data: Response = await res.json()
-
-            setResults(data.results)
-            router.push('/diagnosis/result')
+            
+            const query = new URLSearchParams()
+            data.results.forEach(result => {
+                query.append('type', result.type)
+                result.recommendations.forEach(recommendation => {
+                    query.append('recommendation', recommendation)
+                })
+            })
+            router.push(`/diagnosis/result?${query.toString()}`)
         } catch (err: any) {
             setError(err.message || '診断に失敗しました')
         }
