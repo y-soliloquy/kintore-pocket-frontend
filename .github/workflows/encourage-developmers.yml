@@ -6,7 +6,7 @@ permissions:
 
 on:
   pull_request:
-    types: [synchronize]
+    types: [opened]
 
 jobs:
   create-comment:
@@ -19,11 +19,13 @@ jobs:
           script: |
             const prNumber = context.issue.number;
 
-            await github.rest.issues.createComment({
-              issue_number: prNumber,
-              owner: context.repo.owner,
-              repo: context.repo.repo,
-              body: 'いい調子！引き続き開発していこう🎉 ！'
-            })
+            if (prNumber % 5 === 0) {
+              await github.rest.issues.createComment({
+                issue_number: prNumber,
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                body: 'いい調子！🎉引き続き開発していこう！🚀'
+              })
+            }
 
 
