@@ -17,7 +17,7 @@ jobs:
           script: |
             const prNumber = context.issue.number;
             # if(prNumber % 5 === 0) {
-              github.rest.issues.createComment({
+              await github.rest.issues.createComment({
                 issue_number: prNumber,
                 owner: context.repo.owner,
                 repo: context.repo.repo,
