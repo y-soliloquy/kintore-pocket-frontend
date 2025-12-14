@@ -1,0 +1,28 @@
+name: encourage developers
+
+permissions:
+  contents: read
+  pull-requests: write
+
+on: pull_request
+
+jobs:
+  create comment:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Send comment
+        uses: actions/github-script@v8
+        with:
+          github-token: ${{ secrets.CREATE_PR_COMMENT }}
+          script: |
+            const prNumber = context.issue.number;
+            # if(prNumber % 5 === 0) {
+              github.rest.issues.createComment({
+                issue_number: prNumber,
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                body: 'いい調子！引き続き開発していこう🎉 ！'
+              })
+            # }
+
+
