@@ -15,7 +15,7 @@ jobs:
       - name: Send comment
         uses: actions/github-script@v8
         with:
-          github-token: ${{ secrets.CREATE_PR_COMMENT }}
+          github-token: ${{ secrets.GITHUB_TOKEN }}
           script: |
             const prNumber = context.issue.number;
 
