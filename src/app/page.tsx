@@ -41,8 +41,8 @@ export default function Home() {
                     <h2 className="py-3 pl-6 text-blue-300">
                         <Link href="/diagnosis">- トレーニング志向診断β</Link>
                     </h2>
-                    <h2 className="py-3 text-2xl font-bold">
-                        その他
+                    <h2 className="py-3 pl-6 text-blue-300">
+                        <Link href="/reference">- 参考動画</Link>
                     </h2>
                     <h2 className="py-3 pl-6 text-blue-300">
                         <Link href="/administrator">- 管理者について</Link>
