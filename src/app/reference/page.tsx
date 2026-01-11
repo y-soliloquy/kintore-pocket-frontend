@@ -40,7 +40,21 @@ export default function ReferencePage() {
         <main className="p-6">
             <Link className="p-6" href="/">TOPに戻る</Link>
             <h1>参考動画画面</h1>
-            <iframe width="560" height="315" src="https://www.youtube.com/embed/gIkxdKNnN6o?si=oQ_XfQzZI5JjZblm" title="YouTube video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"></iframe>
+
+            {loading && <p>読み込み中...</p>}
+            {error && <p className="text-red-500">{error}</p>}
+
+            {movies.map((movie, i) =>(
+                <div key={i} className="space-y-2 p-6">
+                    <h2 className="p-6">{movie.title}</h2>
+                    <iframe
+                        width="560"
+                        height="315"
+                        src={movie.url}
+                        title="YouTube video player"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"></iframe>
+                </div>
+            ))}
         </main>
     )
 }
