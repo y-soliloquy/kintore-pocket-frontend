@@ -1,8 +1,40 @@
-'use server'
+'use client'
 
+import { useEffect, useState } from 'react'
 import Link from "next/link"
 
-export default async function ReferencePage() {
+type Movie = {
+    url: string
+    title: string
+}
+
+export default function ReferencePage() {
+    const [movies, setMovies] = useState<Movie[]>([])
+    const [loading, setLoading] = useState(true)
+    const [error, setError] = useState<string | null>(null)
+
+    useEffect(() => {
+        const fetchReferences = async () => {
+            try {
+                const res = await fetch(
+                    `${process.env.NEXT_PUBLIC_API_URL}/reference`
+                )
+
+                if (!res.ok) {
+                    throw new Error(`HTTP error: ${res.status}`)
+                }
+
+                const data: Movie[] = await res.json()
+                setMovies(data)
+            } catch (err) {
+                setError('参考動画の取得に失敗しました')
+                console.log(err)
+            } finally {
+                setLoading(false)
+            }
+        }
+        fetchReferences()
+    }, [])
 
     return (
         <main className="p-6">
