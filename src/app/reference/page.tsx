@@ -39,14 +39,22 @@ export default function ReferencePage() {
     return (
         <main className="p-6">
             <Link className="p-6" href="/">TOPに戻る</Link>
-            <h1>参考動画画面</h1>
+            <h1 className="p-6 text-2xl font-bold">参考動画画面</h1>
+            <div className='pl-6 pr-6 pt-6'>
+                トレーニングに役立つ参考動画集です。<br />
+                以下のポイントでリストアップしています。<br />
+            </div>
+            <ul className='pl-12 pr-6 pb-6 list-disc'>
+                <li>体の構造や動き方を丁寧に説明している</li>
+                <li>奇抜なことをしていない</li>
+            </ul>
 
             {loading && <p>読み込み中...</p>}
             {error && <p className="text-red-500">{error}</p>}
 
             {movies.map((movie, i) =>(
                 <div key={i} className="space-y-2 p-6">
-                    <h2 className="p-6">{movie.title}</h2>
+                    <h2 className="font-bold">{movie.title}</h2>
                     <iframe
                         width="560"
                         height="315"
